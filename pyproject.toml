@@ -1,0 +1,2 @@
+[tool.vercel]
+entrypoint = "name_changer:app"
