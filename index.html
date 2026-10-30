@@ -71,13 +71,16 @@
             submitBtn.textContent = '修改中...';
 
             try {
-                const formData = new FormData();
-                formData.append('user_id', userId);
-                formData.append('new_name', newName);
+                const params = new URLSearchParams();
+                params.append('user_id', userId);
+                params.append('new_name', newName);
 
                 const response = await fetch(API_URL, {
                     method: 'POST',
-                    body: new FormData(form)
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: params
                 });
 
                 const html = await response.text();
